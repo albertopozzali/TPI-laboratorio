@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script src="script02.js" defer></script>
+</head>
+<body>
+    <h1>BENVENUTI</h1>
+    <form id="formFeedback">
+        <fieldset>
+            <label for="nome">Nome</label><br>
+            <input type="text" id="nome" name="nome">
+        </fieldset>
+        <br>
+        <fieldset>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email">
+        </fieldset>
+        <br>
+        <fieldset>
+            <label for="data">Data</label><br>
+            <input type="date" id="data" name="data">
+        </fieldset>
+        <br>
+        <fieldset>
+            <label for="ora">Ora</label><br>
+            <input type="time" id="ora" name="ora">
+        </fieldset>
+        <br>
+        <fieldset>
+            <label for="tipoFeedback">Tipo Feedback</label><br>
+            <select id="tipoFeedback" name="tipoFeedback">
+                <option value="lamentela">Lamentela</option>
+                <option value="richiesta">Richiesta</option>
+                <option value="suggerimento">Suggerimento</option>
+                <option value="altro">Altro</option>
+            </select>
+            <br><br>
+            <label for="testo">Messaggio</label><br>
+            <textarea id="messaggio" name="messaggio"></textarea>
+        </fieldset>
+        <fieldset>
+            <label for="newsletter">Iscriviti alla newsletter</label>
+            <input type="checkbox" id="iscriviti" name="iscriviti">
+        </fieldset>
+        <br>
+        <button id="button">Invia</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data</th>
+                <th>Ora</th>
+                <th>Tipo</th>
+                <th>Messaggio</th>
+                <th>Newsletter</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabellaFeedback">
+        </tbody>
+    </table>
+</body>
+</html>
