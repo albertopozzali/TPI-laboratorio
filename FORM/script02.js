@@ -12,6 +12,7 @@ PROCEDIMENTO:
 
 const formFeedback = document.getElementById("formFeedback");
 const tabellaFeedback = document.getElementById("tabellaFeedback");
+const bottoneClear = document.getElementById("bottoneClear");
 
 formFeedback.addEventListener("submit", gestisciSubmit);
 // const dati = [];
@@ -37,7 +38,6 @@ function creaRiga(valori) {
     const cellaAzioni = document.createElement("td");
     const bottoneElimina = document.createElement("button");
     bottoneElimina.textContent = "ELIMINA";
-    
     cellaAzioni.appendChild(bottoneElimina);
     riga.appendChild(cellaAzioni);
 
@@ -46,6 +46,7 @@ function creaRiga(valori) {
         const indice = dati.indexOf(valori);
         if (indice !== -1) { // Corretto: verifica che l'elemento esista (-1 significa non trovato)
             dati.splice(indice, 1);
+            localStorage.removeItem("feedback", JSON.stringify(dati));
             riga.remove();
         }
     });
@@ -93,3 +94,9 @@ function gestisciSubmit(event) {
     creaRiga(valori);
     formFeedback.reset();
 }
+
+bottoneClear.addEventListener("click", () => {
+        tabellaFeedback.innerHTML="";
+        dati.length=0;
+        localStorage.clear();
+    });
