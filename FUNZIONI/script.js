@@ -1,6 +1,8 @@
 const formAcquisto = document.getElementById("formAcquisto");
 const risultato = document.getElementById("risultato");
 
+
+const dati= JSON.parse(localStorage.getItem("formAcquisto")) || [];
 //GESTIONE EVENTO SUBMIT
 
 formAcquisto.addEventListener("submit", gestisciSubmit);
@@ -41,4 +43,17 @@ function gestisciSubmit(event){
     const sconto = calcolaSconto(subtotale);
     const totale = calcolaTotale(subtotale, sconto);
     mostraRisultato(prodotto, subtotale, sconto, totale);
+
+    const valori = {
+        prodotto,
+        prezzo,
+        quantita,
+        subtotale,
+        sconto,
+        totale
+    };
+
+    dati.push(valori);
+    localStorage.setItem("formAcquisto", JSON.stringify(dati))
+    
 }
