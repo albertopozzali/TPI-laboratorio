@@ -99,3 +99,112 @@ const prodottiDisponibili = prodotti.filter((prodotto) => {
     return prodotto.disponibile;
 })
 console.table(prodottiDisponibili);
+
+//find() cerca il primo elemento che rispetta una condizione.
+//Restituisce l'oggetto trovato
+
+const prodottoTrovato = prodotti.find((prodotto) => {
+  return prodotto.id===3;
+})
+
+console.log("Prodotto con id 3: ");
+console.log(prodottoTrovato);
+
+//reduce()
+//Elabora tutti gli elementi dell'array e restituisce un unico risultato
+
+//In questo esempio calcoliamo il valore complessivo dei prodotti.
+
+//Sintassi:
+//array.reduce((accumulatore, elementoCorrente) => {
+// return nuovoAccumulatore
+//},
+//valoreIniziale
+//)
+
+const valoreComplessivo = prodotti.reduce((totale, prodotto) => {
+  const valoreProdotto = prodotto.prezzo*prodotto.quantita;
+  return totale+valoreProdotto;
+},
+0
+);
+console.log(`Valore complessivo dei prodotti: ${valoreComplessivo} €`)
+
+//ESEMPI MINIMALI
+const numeri = [1, 2, 3, 4]
+
+const somma = numeri.reduce((accumulatore, numeroCorrente) => {
+  return accumulatore + numeroCorrente;
+}, 0);
+console.log(somma);
+
+const moltiplicazione = numeri.reduce((accumulatore, numeroCorrente) => {
+  return accumulatore*numeroCorrente;
+}, 1);
+console.log(moltiplicazione);
+
+//SPREAD OPERATOR CON GLI ARRAY
+//Permette di espandere gli elementi di un array, può essere utilizzato per:
+// - copiare un array,
+// - aggiungere elementi,
+// - unire più array
+
+// Copia dell'array
+
+const copiaProdotti = [...prodotti];
+console.table(copiaProdotti);
+
+
+const nuovoProdotto = {
+  id: 5,
+  nome: "Webcam",
+  categoria: "Accessori",
+  prezzo: 60,
+  quantita: 3,
+  disponibile: true
+}
+
+//Aggiunta elemento
+
+const prodottiAggiornati = [...prodotti, nuovoProdotto];
+console.table(prodottiAggiornati);
+
+console.log("elementi array originale", prodotti.length);
+console.log("elementi array nuovo", prodottiAggiornati.length);
+
+//Unione di due array
+
+const altriProdotti = [{
+  id: 6,
+  nome: "Stampante",
+  categoria: "Informatica",
+  prezzo: 150,
+  quantita: 1,
+  disponibile: true
+}]
+
+const catalogoCompleto = [
+  ...prodottiAggiornati,
+  ...altriProdotti
+];
+
+console.log("Unione di due array")
+console.table(catalogoCompleto)
+
+//SPREAD OPERATOR può essere usato per copiare le proprietà di un oggetto.
+
+//sort()
+//ordina gli elementi dell'array
+//crea una copia con lo spread operator e ordina in modalita crescente
+
+const copiaCatalogoProdotti = [...prodotti];
+
+// Ordina dalla A alla Z usando localeCompare (ideale per le stringhe)
+copiaCatalogoProdotti.sort((a, b) => a.nome.localeCompare(b.nome));
+console.log("Prodotti ordinati per nome: ")
+console.table(copiaCatalogoProdotti);
+
+// Ordina dal prezzo più basso al più alto
+copiaCatalogoProdotti.sort((a, b) => a.prezzo - b.prezzo);
+console.log("Prodotti ordinati per prezzo: ")
+console.table(copiaCatalogoProdotti);
