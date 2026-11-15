@@ -1,0 +1,20 @@
+*{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background-color:black;
+    color: antiquewhite;
+}
+
+button:hover {
+    transform: scale(1.05); /* Ingrandisce leggermente il bottone */
+}
+
+#restart{
+    background-color: red;
+    color: black;
+    font-weight: bold;
+}
+
+p{
+    font-weight: bold;
+}

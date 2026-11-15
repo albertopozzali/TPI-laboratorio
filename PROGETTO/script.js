@@ -4,6 +4,7 @@ const Bottone_forbice = document.getElementById("forbice");
 const Giocata_cpu = document.getElementById("giocata_cpu");
 const punteggio = document.getElementById("punteggio");
 const feedback = document.getElementById("feedback");
+const bottoneResetta = document.getElementById("restart");
 
 let partite = 0;
 let vinte = 0;
@@ -12,9 +13,14 @@ let giocata_CPU = -1; // 0=carta, 1=sasso, 2=forbice
 Bottone_carta.addEventListener('click', () => mostra_giocata_CPU(0));
 Bottone_sasso.addEventListener('click', () => mostra_giocata_CPU(1));
 Bottone_forbice.addEventListener('click', () => mostra_giocata_CPU(2));
+bottoneResetta.addEventListener('click', reset);
 
 function stampa_risultato() {
-    punteggio.innerHTML = `Partite: ${partite} - Vinte: ${vinte}`;
+    if (vinte>partite){
+        punteggio.innerHTML = `Errore nel conteggio, i progressi verranno resettati`;
+    } else {
+        punteggio.innerHTML = `Partite: ${partite} - Vinte: ${vinte}`;
+    }
 }
 
 function mostra_giocata_CPU(giocata_utente){
@@ -44,4 +50,12 @@ function mostra_giocata_CPU(giocata_utente){
         stampa_risultato();
         return;
     }
+}
+
+function reset(){
+    vinte=0;
+    partite=0;
+    stampa_risultato();
+    Giocata_cpu.src="default.png";
+    return
 }
